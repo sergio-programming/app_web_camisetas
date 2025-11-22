@@ -1,12 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { connectDB } from './config/db';
-import { userRoutes } from './routes/user.routes';
-import { productRoutes } from './routes/product.routes';
+import { connectDB } from './config/db.js';
+import { userRoutes } from './routes/user.routes.js';
+import { productRoutes } from './routes/product.routes.js';
 
 // Instancia de express
-app = express();
+const app = express();
 
 // Configuración de las variables de entorno
 dotenv.config();
