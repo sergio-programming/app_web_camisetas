@@ -1,0 +1,52 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthServices } from '../../services/auth-services';
+
+@Component({
+  selector: 'app-login-component',
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './login-component.html',
+  styleUrl: './login-component.css',
+})
+export class LoginComponent {
+
+  loginForm: FormGroup;
+  messageInvalidForm: string = '';
+  messageCredentialsError: string = '';
+
+  constructor(
+    private authServices: AuthServices,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  login(): void{
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      this.messageInvalidForm = 'Debes completar los campos correctamente';
+      return
+    }
+
+    const { email, password } = this.loginForm.value;
+
+    this.authServices.login({ email, password }).subscribe({
+      next: () => {
+        this.messageInvalidForm = '';
+        this.messageCredentialsError = '';
+        this.router.navigate(['/home']);
+      }, error: (err) => {
+        console.error('Error al iniciar sesión: ', err);
+        this.messageCredentialsError = 'Error al ingresar las credenciales';
+        this.messageInvalidForm = '';
+      }
+    });
+  }
+}
