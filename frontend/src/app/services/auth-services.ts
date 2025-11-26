@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
 export interface LoginResponse {
-  token: string;
+  accessToken: string;
   user: {
     nombre: string;
     email: string;
@@ -23,7 +23,7 @@ export class AuthServices {
   login(credentials: {email: string, password: string}): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials, { withCredentials: true }).pipe(
       tap((response) => {
-        localStorage.setItem('accessToken', response.token);
+        localStorage.setItem('accessToken', response.accessToken);
 
         if (response.user) {
           localStorage.setItem('user', JSON.stringify(response.user))

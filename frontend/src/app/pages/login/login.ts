@@ -5,13 +5,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServices } from '../../services/auth-services';
 
+
 @Component({
-  selector: 'app-login-component',
+  selector: 'app-login',
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './login-component.html',
-  styleUrl: './login-component.css',
+  templateUrl: './login.html',
+  styleUrl: './login.css',
 })
-export class LoginComponent {
+export class Login {
 
   loginForm: FormGroup;
   messageInvalidForm: string = '';
@@ -49,4 +50,6 @@ export class LoginComponent {
       }
     });
   }
+
+
 }

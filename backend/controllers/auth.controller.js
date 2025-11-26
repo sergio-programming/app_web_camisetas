@@ -3,8 +3,6 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { generateTokens } from '../utils/token.utils.js';
 
-const SECRET_KEY = process.env.SECRET_KEY;
-
 export const login = async (req, res) => {
     try {
         
@@ -86,6 +84,8 @@ export const refreshAccessToken = (req, res) => {
     if (!token) {
         return res.status(401).json({ message: 'No hay refresh token' });
     }
+
+    const SECRET_KEY = process.env.SECRET_KEY;
 
     jwt.verify(token, SECRET_KEY, (err, decoded) => {
         if (err) {

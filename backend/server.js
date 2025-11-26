@@ -1,20 +1,23 @@
 import express from 'express';
+import 'dotenv/config';
 import cors from 'cors';
-import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 import { connectDB } from './config/db.js';
 import { userRoutes } from './routes/user.routes.js';
 import { productRoutes } from './routes/product.routes.js';
 import { authRoutes } from './routes/auth.routes.js';
 
+
 // Instancia de express
 const app = express();
 
-// Configuración de las variables de entorno
-dotenv.config();
-
 // Configuración de Middlewares
 app.use(express.json()); // Permite el analisis de solicitudes en formato JSON
-app.use(cors()); // Habilita CORS para permitir peticiones externas
+app.use(cookieParser());
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+})); // Habilita CORS para permitir peticiones externas
 
 // Rutas
 app.use('/api/users', userRoutes);
