@@ -6,9 +6,15 @@ export interface User {
   _id: string;
   email: string;
   nombre: string;
-  password: string;
   role: string;
   activo: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface UserResponse {
+  message: string;
+  user: String
 }
 
 export interface UserCreate {
@@ -35,8 +41,12 @@ export class UserServices {
     return this.http.get<User>(`${this.apiUrl}/${_id}`);
   }
 
-  createUser(user: UserCreate): Observable<User> {
-    return this.http.post<User>(this.apiUrl, user)
+  createUser(user: UserCreate): Observable<UserResponse> {
+    return this.http.post<UserResponse>(this.apiUrl, user)
+  }
+
+  updateUser(_id: string, user: Partial<User>): Observable<UserResponse> {
+    return this.http.put<UserResponse>(`${this.apiUrl}/${_id}`, user);
   }
 
   deleteUser(_id: string): Observable<{ message: string }> {

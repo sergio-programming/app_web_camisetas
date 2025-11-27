@@ -92,7 +92,7 @@ export const updateUser = async (req, res) => {
     try {
         
         const { id } = req.params;
-        const { email, nombre, role } = req.body;
+        const { email, nombre, role, activo } = req.body;
 
         const user = await User.findById(id);
 
@@ -104,17 +104,18 @@ export const updateUser = async (req, res) => {
             return res.status(400).json({ message : 'El email debe tener un formato válido' });
         }
 
-        if (password && password.length < 6) {
-            return res.status(400).json({ message : 'La contraseña debe tener una longitud mínima de 6 caracteres' });
-        }
-
         if (role && (role !== "superadmin" && role !== "admin")) {
             return res.status(400).json({ message : 'El rol enviado no es válido' });
+        }
+
+        if (activo !== undefined && typeof activo !== "boolean") {
+            return res.status(400).json({ message : 'El atributo "activo" debe ser booleano (true/false)' });
         }
 
         if (email !== undefined) user.email = email;
         if (nombre !== undefined) user.nombre = nombre;
         if (role !== undefined) user.role = role;
+        if (activo !== undefined) user.activo = activo;
 
         await user.save();
         const { password: _, ...userResponse } = user.toObject();

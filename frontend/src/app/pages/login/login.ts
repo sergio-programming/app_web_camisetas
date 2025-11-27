@@ -15,7 +15,7 @@ import { AuthServices } from '../../services/auth-services';
 export class Login {
 
   loginForm: FormGroup;
-  messageInvalidForm: string = '';
+  invalidFormMessage: string = '';
   messageCredentialsError: string = '';
 
   constructor(
@@ -32,7 +32,7 @@ export class Login {
   login(): void{
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
-      this.messageInvalidForm = 'Debes completar los campos correctamente';
+      this.invalidFormMessage = 'Debes completar los campos correctamente';
       return
     }
 
@@ -40,13 +40,13 @@ export class Login {
 
     this.authServices.login({ email, password }).subscribe({
       next: () => {
-        this.messageInvalidForm = '';
+        this.invalidFormMessage = '';
         this.messageCredentialsError = '';
         this.router.navigate(['/home']);
       }, error: (err) => {
         console.error('Error al iniciar sesión: ', err);
         this.messageCredentialsError = 'Error al ingresar las credenciales';
-        this.messageInvalidForm = '';
+        this.invalidFormMessage = '';
       }
     });
   }
