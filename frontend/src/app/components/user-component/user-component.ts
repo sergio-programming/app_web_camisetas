@@ -17,6 +17,9 @@ export class UserComponent implements OnInit {
   userCreateForm: FormGroup;
   userUpdateForm: FormGroup;
 
+  getCreateForm: boolean = false;
+  getUpdateForm: boolean = false;
+
   successMessage: string = "";
   errorMessage: string = "";
   invalidFormMessage: string = "";
@@ -117,5 +120,12 @@ export class UserComponent implements OnInit {
     }
   }
 
+  onGetCreateForm() {
+    return !this.getCreateForm;
+  }
+
+  onGetUpdateForm() {
+    return !this.getUpdateForm;
+  }
 
 }

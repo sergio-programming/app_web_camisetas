@@ -42,7 +42,7 @@ export class Login {
       next: () => {
         this.invalidFormMessage = '';
         this.messageCredentialsError = '';
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home-admin']);
       }, error: (err) => {
         console.error('Error al iniciar sesión: ', err);
         this.messageCredentialsError = 'Error al ingresar las credenciales';

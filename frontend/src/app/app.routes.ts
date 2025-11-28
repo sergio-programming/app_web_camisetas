@@ -3,14 +3,16 @@ import { Routes } from '@angular/router';
 import { Login } from './pages/login/login';
 import { Home } from './pages/home/home';
 import { HomeWelcomeComponent } from './components/home-welcome-component/home-welcome-component';
+import { UserComponent } from './components/user-component/user-component';
 
 export const routes: Routes = [
     { path: 'login', component: Login },
     { 
-        path: 'home', 
+        path: 'home-admin', 
         component: Home,
         children: [
-            { path: '', component: HomeWelcomeComponent }
+            { path: '', component: HomeWelcomeComponent },
+            { path: 'users', component: UserComponent }
         ]
     },
 
