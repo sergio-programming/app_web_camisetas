@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 export interface User {
   _id: string;
@@ -14,7 +14,7 @@ export interface User {
 
 export interface UserResponse {
   message: string;
-  user: String
+  user: User;
 }
 
 export interface UserCreate {

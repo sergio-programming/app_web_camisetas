@@ -33,7 +33,7 @@ export class UserComponent implements OnInit {
   onGetUsers(): void {
     this.userServices.getUsers().subscribe({
       next: (data) => (this.users = data),
-      error: (err) => console.error('Error al mostrar usuarios: ', err)
+      error: (err) => console.error('Error al mostrar los usuarios: ', err)
     })
   }
 

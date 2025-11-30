@@ -1,0 +1,10 @@
+<button
+    (click)="onGetCreateForm()"
+    class="flex mt-4 mx-auto px-4 py-2 bg-gray-400 text-white font-semibold border border-gray-600 rounded-lg hover:bg-gray-600 cursor-pointer"    
+>
+    Crear Producto
+</button>
+
+@if (getCreateForm) {
+    <app-create-product-form-component (productCreated)="refreshProducts()"></app-create-product-form-component>    
+}
