@@ -40,4 +40,19 @@ export class AuthServices {
       })
     );
   }
+
+  getToken() {
+    return localStorage.getItem('accessToken');
+  }
+
+  getRole() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user).role : null;
+  }
+ 
+  
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+
 }

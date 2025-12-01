@@ -93,7 +93,7 @@ export const refreshAccessToken = (req, res) => {
         }
 
         const newAccessToken = jwt.sign(
-            { email: decoded.email },
+            { email: decoded.email, role: decoded.role },
             SECRET_KEY,
             { expiresIn: '2h' }
         );

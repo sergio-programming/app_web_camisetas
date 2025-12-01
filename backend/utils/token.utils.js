@@ -9,7 +9,7 @@ export const generateTokens = (user) => {
     );
 
     const refreshToken = jwt.sign(
-        { email: user.email },
+        { email: user.email, role: user.role },
         SECRET_KEY,
         { expiresIn: '7d' }  // 7 días
     );

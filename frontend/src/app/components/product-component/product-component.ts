@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateProductFormComponent } from '../create-product-form-component/create-product-form-component';
+import { UpdateProductFormComponent } from '../update-product-form-component/update-product-form-component';
 import { ProductServices, Product } from '../../services/product-services';
 
 
 @Component({
   selector: 'app-product-component',
-  imports: [CommonModule, CreateProductFormComponent],
+  imports: [CommonModule, CreateProductFormComponent, UpdateProductFormComponent],
   templateUrl: './product-component.html',
   styleUrl: './product-component.css',
 })
@@ -41,7 +42,7 @@ export class ProductComponent {
     this.onGetProducts();
   }
 
-  submitDeleteUser(_id: string) {
+  submitDeleteProduct(_id: string) {
     if (confirm('¿Estas seguro de eliminar este producto?')) {
       this.productServices.deleteProduct(_id).subscribe({
         next: (res) => {

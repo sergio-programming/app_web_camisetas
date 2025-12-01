@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Product {
+  _id: string;
   codigo: string;
   descripcion: string;
   precio: number;
@@ -41,6 +42,14 @@ export class ProductServices {
   
   getProductById(_id: string): Observable<Product> {
     return this.http.get<Product>(`${this.apiUrl}/${_id}`);
+  }
+
+  getShirts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/shirts`);
+  }
+
+  getAlbums(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/albums`);
   }
 
   createProduct(user: ProductCreate): Observable<ProductResponse> {
