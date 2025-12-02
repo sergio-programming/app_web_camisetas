@@ -1,7 +1,7 @@
 <form
     [formGroup]="productUpdateForm"
     (ngSubmit)="submitUpdateProduct()"
-    class="w-full flex flex-col mt-5 py-8 px-8 bg-white border border-gray-400 rounded-lg"
+    class="w-full max-w-xl mx-auto flex flex-col mt-5 py-8 px-6 sm:px-8 bg-white border border-gray-400 rounded-lg"
 >
     <h2 class="mt-2 text-2xl text-center font-bold">Registro de Productos</h2>
 
@@ -12,7 +12,7 @@
         type="text"
         id="codigo"
         formControlName="codigo"
-        class="mt-1 py-2 px-2 border border-gray-400 rounded-lg"    
+        class="mt-1 py-2 px-2 w-full border border-gray-400 rounded-lg"
         placeholder="Ingrese el código..."
     >
 
@@ -27,7 +27,7 @@
         type="text"
         id="descripcion"
         formControlName="descripcion"
-        class="mt-1 py-2 px-2 border border-gray-400 rounded-lg"    
+        class="mt-1 py-2 px-2 w-full border border-gray-400 rounded-lg"
         placeholder="Ingrese la descripción..."
     >
 
@@ -42,7 +42,7 @@
         type="number"
         id="precio"
         formControlName="precio"
-        class="mt-1 py-2 px-2 border border-gray-400 rounded-lg"    
+        class="mt-1 py-2 px-2 w-full border border-gray-400 rounded-lg"
         placeholder="Ingrese el precio..."
     >
 
@@ -55,10 +55,10 @@
     <label class="mt-4 font-semibold">Categoría</label>
     <select 
         formControlName="categoria"
-        class="px-4 py-2 border border-gray-400 rounded-lg"
+        class="px-4 py-2 w-full border border-gray-400 rounded-lg"
     >
         <option value="">-- Selecciona una opción --</option>
-        <option value="Camisetas" >Camisetas</option>
+        <option value="Camisetas">Camisetas</option>
         <option value="Discos">Discos</option>
     </select>
 
@@ -73,7 +73,7 @@
         type="text"
         id="imagen"
         formControlName="imagen"
-        class="mt-1 py-2 px-2 border border-gray-400 rounded-lg"    
+        class="mt-1 py-2 px-2 w-full border border-gray-400 rounded-lg"
         placeholder="Ingrese la URL de la imagen..."
     >
 
@@ -107,6 +107,4 @@
             {{ successMessage }}
         </div>
     }
-
 </form>
-

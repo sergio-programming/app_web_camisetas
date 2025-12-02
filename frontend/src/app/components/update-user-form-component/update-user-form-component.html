@@ -1,8 +1,8 @@
 <form
-        [formGroup]="userUpdateForm"
-        (ngSubmit)="submitUpdateUser()"
-        class="w-full flex flex-col mt-5 py-8 px-8 bg-white border border-gray-400 rounded-lg"
-    >
+    [formGroup]="userUpdateForm"
+    (ngSubmit)="submitUpdateUser()"
+    class="w-full max-w-xl mx-auto flex flex-col mt-5 py-8 px-6 sm:px-8 bg-white border border-gray-400 rounded-lg"
+>
     <h2 class="mt-2 text-2xl text-center font-bold">Actualización de Usuarios</h2>
 
     <p class="mt-4 font-semibold">Ingrese los datos del usuario</p>
@@ -12,7 +12,7 @@
         type="email"
         id="email"
         formControlName="email"
-        class="mt-1 py-2 px-2 border border-gray-400 rounded-lg"    
+        class="mt-1 py-2 px-2 w-full border border-gray-400 rounded-lg"
         placeholder="Ingrese el email..."
     >
 
@@ -27,7 +27,7 @@
         type="text"
         id="nombre"
         formControlName="nombre"
-        class="mt-1 py-2 px-2 border border-gray-400 rounded-lg"    
+        class="mt-1 py-2 px-2 w-full border border-gray-400 rounded-lg"
         placeholder="Ingrese el nombre..."
     >
 
@@ -40,10 +40,10 @@
     <label class="mt-4 font-semibold">Rol</label>
     <select 
         formControlName="role"
-        class="px-4 py-2 border border-gray-400 rounded-lg"
+        class="px-4 py-2 w-full border border-gray-400 rounded-lg"
     >
         <option value="">-- Selecciona una opción --</option>
-        <option value="superadmin" >superadmin</option>
+        <option value="superadmin">superadmin</option>
         <option value="admin">admin</option>
     </select>
 
@@ -88,5 +88,4 @@
             {{ successMessage }}
         </div>
     }
-
 </form>
