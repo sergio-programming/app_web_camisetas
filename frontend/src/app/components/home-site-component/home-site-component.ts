@@ -23,9 +23,9 @@ export class HomeSiteComponent implements OnInit {
   }
 
   loadFeaturedProducts(): void{
-    this.productServices.getProducts().subscribe({
-      next:(products) => {
-        this.featuredProducts = products.slice(0, 3);
+    this.productServices.getShirts().subscribe({
+      next:(shirts) => {
+        this.featuredProducts = shirts.slice(4, 7);
       },
       error: (err) => console.error('Error al cargar los productos destacados: ', err)
     });
